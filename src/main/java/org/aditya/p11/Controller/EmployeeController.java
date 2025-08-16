@@ -43,7 +43,9 @@ public class EmployeeController {
     @GetMapping("/{name}")
     public EmployeeDetails getEmployeeByName(@PathVariable String name) {
         return employeeList.stream()
-                .filter(e -> e.getName() == name)
+               // .filter(e -> e.getName() == name)
+                .filter(e -> e.getName().equalsIgnoreCase(name))
+
                 .findFirst()
 
 
