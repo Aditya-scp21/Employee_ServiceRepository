@@ -35,6 +35,20 @@ public class EmployeeController {
         return employeeList.stream()
                 .filter(e -> e.getEid() == id)
                 .findFirst()
+
+
+                .orElse(null);
+    }
+
+    @GetMapping("/{name}")
+    public EmployeeDetails getEmployeeByName(@PathVariable String name) {
+        return employeeList.stream()
+               // .filter(e -> e.getName() == name)
+                .filter(e -> e.getName().equalsIgnoreCase(name))
+
+                .findFirst()
+
+
                 .orElse(null);
     }
 
